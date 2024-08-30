@@ -5,12 +5,8 @@ extension Bundle {
         return infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown"
     }
     
-    var appBuild: String {
-        return infoDictionary?["CFBundleVersion"] as? String ?? "Unknown"
-    }
-    
     var fullVersion: String {
-        return "\(appVersion).\(appBuild)"
+        return "\(appVersion)"
     }
 }
 

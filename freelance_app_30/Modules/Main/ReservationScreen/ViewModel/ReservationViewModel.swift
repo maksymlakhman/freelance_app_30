@@ -166,20 +166,21 @@ final class ReservationViewModel: ReservationViewModelProtocol, ReservationFlowS
         let minNameLength = 3
         let maxNameLength = 24
         let containsNumbers = reservationUserName.range(of: "[0-9]", options: .regularExpression) != nil
+
         let containsInvalidCharacters = reservationUserName.range(of: "[^a-zA-Zа-яА-Яà-ÿÀ-ŸіІїЇєЄ ]", options: .regularExpression) != nil
         
         let spaceCount = reservationUserName.components(separatedBy: " ").count - 1
         let isNameValid = reservationUserName.count >= minNameLength &&
                           reservationUserName.count <= maxNameLength &&
                           !containsNumbers &&
-                          !containsInvalidCharacters &&
-                          spaceCount == 1
+                          !containsInvalidCharacters
         
+
         let isPhoneValid = reservationUserPhoneNumber.count == 17
-        
+
         let now = Date()
         let isDateValid = date >= now
-
+        
         let calendar = Calendar.current
         let nowComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: now)
         let dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date)
@@ -194,8 +195,6 @@ final class ReservationViewModel: ReservationViewModelProtocol, ReservationFlowS
         
         return isNameValid && isPhoneValid && isDateValid && isTimeValid && !isNameTooShort
     }
-
-
 
     
     func validateReservationUserName() -> Bool {

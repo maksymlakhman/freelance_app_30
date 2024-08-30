@@ -55,12 +55,8 @@ final class HistoryViewModel: HistoryViewModelProtocol, HistoryFlowStateProtocol
         let reservationDate = DateFormatter.localizedString(from: reservation.reservationDate, dateStyle: .medium, timeStyle: .none)
         let reservationTime = DateFormatter.localizedString(from: reservation.reservationTime, dateStyle: .none, timeStyle: .short)
 
-        return "\(appName)\n\nБронювання:\nІм'я: \(userName)\nКількість гостей: \(numberOfPersons)\nДата: \(reservationDate)\nЧас: \(reservationTime)"
+        return "\(appName)\n\nReservation:\nName: \(userName)\nNumber of Guests: \(numberOfPersons)\nDate: \(reservationDate)\nTime: \(reservationTime)"
     }
-//    func getShareReservationURL(for reservation: HistoryRowItemModel) -> String? {
-//        let baseURL = "https://console.firebase.google.com/u/0/project/freelanceapp30-ebd1d/database/freelanceapp30-ebd1d-default-rtdb/data/~2F/reservations/"
-//        return baseURL + reservation.id.uuidString
-//    }
     func shareReservation(_ reservation: HistoryRowItemModel) {
         self.selectedReservation = reservation
         self.showShareReservationSheet = true
